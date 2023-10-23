@@ -13,11 +13,11 @@ void main() {
     title: 'Passing Data',
     home: TodosScreen(
       todos: [
-        Todo('Comprar leche', 'Comprar leche en la tienda'),
-        Todo('Llevar el coche al taller', 'Programar una revisión del coche'),
-        Todo('Estudiar para el examen', 'Preparar para el examen de matemáticas'),
-        Todo('Hacer ejercicio', 'Ir al gimnasio y hacer ejercicios'),
-        Todo('Cita con el médico', 'Consulta médica a las 3 PM'),
+        Todo('• Saludar a Steven', 'Saludar a mi amigo Steven'),
+        Todo('• Comprar la comida del mono', 'Ir a comprarle la comida al michi'),
+        Todo('• Escuchar 1989 Taylor´s Version', 'Escuchar la regrabacion de 1989 TV el 27/10/2023'),
+        Todo('• Estudiar para el examen', 'Preparar para el examen de Granadeño'),
+        Todo('• Ir al oftalmólogo', 'cita con el oftalmólogo 09:30 AM'),
       ],
     ),
   ));
@@ -32,23 +32,43 @@ class TodosScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Formas de pasar parametros de una pantalla a otra', style: TextStyle(fontSize: 16),
-      ),),
-      body: ListView.builder(
-        itemCount: todos.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(todos[index].title),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailScreen(todo: todos[index]),
-                ),
-              );
-            },
-          );
-        },
+        title: Text(
+          'Formas de pasar parámetros de una pantalla a otra',
+          style: TextStyle(fontSize: 16.5),
+        ),
+        backgroundColor: const Color.fromARGB(255, 243, 33, 33),
+      ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              'Lista de Tareas',
+              style: TextStyle(
+                fontSize: 24.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: todos.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(todos[index].title),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => DetailScreen(todo: todos[index]),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -64,6 +84,7 @@ class DetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(todo.title),
+        backgroundColor: const Color.fromARGB(255, 243, 33, 33),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
