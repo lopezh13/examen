@@ -8,9 +8,19 @@ class Todo {
 }
 
 void main() {
-  runApp(const MyApp());
+  runApp(MaterialApp(
+    title: 'Passing Data',
+    home: TodosScreen(
+      todos: List.generate(
+        20,
+        (i) => Todo(
+              'Todo $i',
+              'A description of what needs to be done for Todo $i',
+            ),
+      ),
+    ),
+  ));
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
