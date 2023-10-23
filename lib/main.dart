@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 
 class Todo {
   final String title;
@@ -25,7 +26,7 @@ void main() {
 class TodosScreen extends StatelessWidget {
   final List<Todo> todos;
 
-  TodosScreen({Key key, @required this.todos}) : super(key: key);
+  TodosScreen({Key? key, required this.todos}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +57,27 @@ class TodosScreen extends StatelessWidget {
   }
 }
 
+class DetailScreen extends StatelessWidget {
+  // Declara un campo que contenga el objeto Todo
+  final Todo todo;
+
+  // En el constructor, se requiere un objeto Todo
+  DetailScreen({Key? key, required this.todo}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // Usa el objeto Todo para crear nuestra UI
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(todo.title),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Text(todo.description),
+      ),
+    );
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
